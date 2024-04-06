@@ -132,8 +132,8 @@ elif choice=='Predict New Data':
             df['Processed_Comment'] = optimized_process_text(df['Comment'])
             predictions = model_SVM.predict(df['Processed_Comment'])
             st.write(df)
-    # Từ df này, người dùng có thể thực hiện các xử lý dữ liệu khác nhau
-    # submitted_project1 = st.button("Dự đoán cảm xúc")
-    # if submitted_project1:
-    #     st.write("Hiển thị kết quả dự đoán cảm xúc...")
-    #     st.write(df)
+    Từ df này, người dùng có thể thực hiện các xử lý dữ liệu khác nhau
+    submitted_project1 = st.button("Dự đoán cảm xúc")
+    if submitted_project1:
+        st.write("Hiển thị kết quả dự đoán cảm xúc...")
+        st.write(df)
