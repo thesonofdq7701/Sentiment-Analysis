@@ -145,5 +145,5 @@ elif choice=='Predict New Data':
     submitted_project1 = st.button("Dự đoán cảm xúc")
     if submitted_project1:
         st.write("Hiển thị kết quả dự đoán cảm xúc...")
-        # result = pd.concat([df['Comment'], predictions_df], axis = 1)
-        st.write(df)
+        result = pd.concat([df['Comment'], predictions_df], axis = 1)
+        st.write(result)
