@@ -136,7 +136,7 @@ elif choice=='Predict New Data':
         if uploaded_file is not None:
             # Đọc file dữ liệu
             df = pd.read_csv(uploaded_file)
-            df['Processed_Comment'] = optimized_process_text(df['Comment'])
+            df['Processed_Comment'] = df['Comment'].apply(lambda x: optimized_process_text(x))
             predictions = model_SVM.predict(df['Processed_Comment'])
             st.write(df)
     # Từ df này, người dùng có thể thực hiện các xử lý dữ liệu khác nhau
