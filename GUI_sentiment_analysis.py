@@ -146,4 +146,6 @@ elif choice=='Predict New Data':
     if submitted_project1:
         st.write("Hiển thị kết quả dự đoán cảm xúc...")
         result = pd.concat([df['Comment'], predictions_df], axis = 1)
+        final_column_name = result.columns[1]
+        result.rename(columns={final_column_name:'Sentiment'}, inplace=True)
         st.write(result)
