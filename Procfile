@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run GUI_Customer_Segmentation.py
+web: sh setup.sh && streamlit run GUI_sentiment_analysis.py
