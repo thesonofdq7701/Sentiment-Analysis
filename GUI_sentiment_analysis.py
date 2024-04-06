@@ -95,31 +95,38 @@ elif choice=='Predict New Data':
         if content:
             preprocessing_content = optimized_process_text(content)
             preprocessing_content = pd.Series(preprocessing_content)
-            st.write(preprocessing_content)
             content = pd.Series([content])
             predict_data = pd.DataFrame({'Sentiment':model_SVM.predict(preprocessing_content)})
             df = pd.concat([content, predict_data], axis=1)
             first_column_name = df.columns[0]
             df.rename(columns={first_column_name:'Comment'}, inplace=True)
-            st.write("#### **Dự đoán ý kiến:**")
+        submitted_project1 = st.button("#### **Dự đoán ý kiến:**")
+        if submitted_project1:
             st.dataframe(df)
     # Nếu người dùng chọn nhập nhiều dòng dữ liệu trực tiếp vào một table
     elif type == "Nhập nhiều dòng dữ liệu trực tiếp":
         st.subheader("Nhập nhiều dòng dữ liệu trực tiếp")        
-        preprocessing_comments = pd.DataFrame(columns=["Comment"])
-        comments = pd.DataFrame(columns=["Comment"])
-        sentiment = pd.DataFrame(columns=["Sentiment"])
+        preprocessing_comments = []
+        comments = []
+        sentiment = []
         for i in range(5):
             comment = st.text_area(f"Nhập ý kiến {i+1}:")
-            comments = comments.append({"Comment": comment}, ignore_index=True)
+            comments.append({"Comment": comment})
             preprocessing_comment = optimized_process_text(comment)
-            preprocessing_comments = preprocessing_comments.append({"Comment": preprocessing_comment}, ignore_index=True)
+            preprocessing_comments.append({"Comment": preprocessing_comment})
+
+        # Chuyển đổi danh sách thành DataFrame
+        comments_df = pd.DataFrame(comments)
+        preprocessing_comments_df = pd.DataFrame(preprocessing_comments)
+
         # Sử dụng model_SVM để dự đoán cảm xúc và tạo DataFrame mới cho dự đoán
-        predictions = model_SVM.predict(preprocessing_comments['Comment'])
+        predictions = model_SVM.predict(preprocessing_comments_df['Comment'])
         predicted_sentiments = pd.DataFrame({"Sentiment": predictions})
-        results = pd.concat([comments, predicted_sentiments], axis=1)
-        st.write("#### **Dự đoán ý kiến:**")
-        st.dataframe(results)
+        results = pd.concat([comments_df, predicted_sentiments], axis=1)
+        submitted_project1 = st.button("#### **Hiển thị kết quả dự đoán cảm xúc...**")
+        if submitted_project1:
+            st.dataframe(results)
+
              
     # Nếu người dùng chọn upload file
     elif type == "Upload file":
