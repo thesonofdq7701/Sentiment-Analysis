@@ -139,10 +139,11 @@ elif choice=='Predict New Data':
             df['Processed_Comment'] = df['Comment'].apply(lambda x: optimized_process_text(x))
             predictions = model_SVM.predict(df['Processed_Comment'])
             st.write(df)
-            st.write(predictions)
+            predictions_df = pd.Dataframe(predictions)
+            
     # Từ df này, người dùng có thể thực hiện các xử lý dữ liệu khác nhau
     submitted_project1 = st.button("Dự đoán cảm xúc")
     if submitted_project1:
         st.write("Hiển thị kết quả dự đoán cảm xúc...")
-        # result = pd.concat([df['Comment'], predictions], axis = 1)
+        # result = pd.concat([df['Comment'], predictions_df], axis = 1)
         st.write(df)
