@@ -1,5 +1,10 @@
-streamlit
+Copy code
 pandas
+numpy
+underthesea
+regex
+demoji
+pyvi
+wordcloud
 matplotlib
-seaborn
-joblib
+re
