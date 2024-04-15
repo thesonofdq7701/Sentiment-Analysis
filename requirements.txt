@@ -1,0 +1,9 @@
+pandas
+numpy
+underthesea
+regex
+demoji
+pyvi
+wordcloud
+matplotlib
+
